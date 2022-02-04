@@ -1,6 +1,6 @@
 {
   "kind": "Template",
-  "apiVersion": "v1",
+  "apiVersion": "template.openshift.io/v1",
   "metadata": {
     "name": "beego-example",
     "annotations": {
@@ -16,7 +16,7 @@
   "objects": [
     {
       "kind": "Service",
-      "apiVersion": "v1",
+      "apiVersion": "service.openshift.io/v1",
       "metadata": {
         "name": "beego-example",
         "annotations": {
@@ -38,7 +38,7 @@
     },
     {
       "kind": "Route",
-      "apiVersion": "v1",
+      "apiVersion": "route.openshift.io/v1",
       "metadata": {
         "name": "beego-example"
       },
@@ -52,7 +52,7 @@
     },
     {
       "kind": "ImageStream",
-      "apiVersion": "v1",
+      "apiVersion": "image.openshift.io/v1",
       "metadata": {
         "name": "beego-example",
         "annotations": {
@@ -62,7 +62,7 @@
     },
     {
       "kind": "BuildConfig",
-      "apiVersion": "v1",
+      "apiVersion": "build.openshift.io/v1",
       "metadata": {
         "name": "beego-example",
         "annotations": {
@@ -79,12 +79,19 @@
           "contextDir": "${CONTEXT_DIR}"
         },
         "strategy": {
-          "type": "Docker"
-        },
+          "type": "Source",
+          "sourceStrategy": {
+            "from": {
+                "kind": "ImageStreamTag",
+                "namespace": "openshift",
+                "name": "golang"
+            }
+            }
+         },
         "output": {
           "to": {
             "kind": "ImageStreamTag",
-            "name": "beego-example:latest"
+            "name": "golang:latest"
           }
         },
         "triggers": [
@@ -105,7 +112,7 @@
     },
     {
       "kind": "DeploymentConfig",
-      "apiVersion": "v1",
+      "apiVersion": "deploy.openshift.io/v1",
       "metadata": {
         "name": "beego-example",
         "annotations": {
