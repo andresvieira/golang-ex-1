@@ -1,7 +1,6 @@
-FROM golang:1.11
+FROM golang:latest
 
 USER nobody
-RUN mkidr -p /opt/app-root/gobinary
 RUN mkdir -p /go/src/github.com/openshift/golang-ex
 WORKDIR /go/src/github.com/openshift/golang-ex
 
