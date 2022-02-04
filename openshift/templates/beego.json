@@ -76,7 +76,6 @@
             "uri": "${SOURCE_REPOSITORY_URL}",
             "ref": "${SOURCE_REPOSITORY_REF}"
           },
-          "contextDir": "${CONTEXT_DIR}"
         },
         "strategy": {
           "type": "Source",
@@ -178,10 +177,6 @@
     {
       "name": "SOURCE_REPOSITORY_REF",
       "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch"
-    },
-    {
-      "name": "CONTEXT_DIR",
-      "description": "Set this to the relative path to your project if it is not in the root of your repository"
     },
     {
       "name": "APPLICATION_DOMAIN",
