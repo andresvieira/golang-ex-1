@@ -6,5 +6,5 @@ WORKDIR /go/src/github.com/openshift/golang-ex
 
 COPY . /go/src/github.com/openshift/golang-ex
 RUN go build
-RUN go mod init ./golang-ex
+
 CMD ["./golang-ex"]
